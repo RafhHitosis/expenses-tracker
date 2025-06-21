@@ -43,39 +43,54 @@ function App() {
     return true;
   });
 
+  const totalAmount = filteredExpenses.reduce(
+    (acc, item) => acc + item.amount,
+    0
+  );
+
   return (
-    <div className="container">
-      <h1>💰 Expense Tracker</h1>
-      {user ? (
-        <>
-          <div className="card">
-            <ExpenseForm userId={user.uid} />
+    <div className="app">
+      <div className="container">
+        <header className="app-header">
+          <div className="header-content">
+            <h1 className="app-title">
+              <span className="title-icon">💰</span>
+              <span className="title-text">Expense Tracker</span>
+            </h1>
+            <div className="total-display">
+              <span className="total-label">Total</span>
+              <span className="total-amount">₱{totalAmount.toFixed(2)}</span>
+            </div>
           </div>
+        </header>
 
-          <div className="card">
-            <Filter filter={filter} setFilter={setFilter} />
-          </div>
+        {user ? (
+          <main className="app-main">
+            <section className="form-section">
+              <ExpenseForm userId={user.uid} />
+            </section>
 
-          <div className="card">
-            <ExpenseList expenses={filteredExpenses} userId={user.uid} />
-          </div>
+            <section className="filter-section">
+              <Filter filter={filter} setFilter={setFilter} />
+            </section>
 
-          <div className="total-amount">
-            Total: ₱
-            {filteredExpenses
-              .reduce((acc, item) => acc + item.amount, 0)
-              .toFixed(2)}
-          </div>
+            <section className="list-section">
+              <ExpenseList expenses={filteredExpenses} userId={user.uid} />
+            </section>
 
-          <ExportCSV expenses={filteredExpenses} />
-        </>
-      ) : (
-        <div className="card">
-          <div className="loading">
-            <div className="spinner"></div>
+            <section className="export-section">
+              <ExportCSV expenses={filteredExpenses} />
+            </section>
+          </main>
+        ) : (
+          <div className="loading-container">
+            <div className="loading-spinner">
+              <div className="spinner"></div>
+              <p className="loading-text">Loading your expenses...</p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
