@@ -594,7 +594,8 @@ body {
   font-weight: 700;
   color: var(--text-primary);
   font-size: 1.125rem;
-  font-family: "SF Mono", Monaco, "Inconsolata", "Roboto Mono", monospace;
+  font-family: "Segoe UI", "Noto Sans", "SF Mono", Monaco, "Inconsolata",
+    "Roboto Mono", "Roboto", monospace, sans-serif;
 }
 
 .expense-actions {
@@ -789,7 +790,8 @@ body {
   font-weight: 700;
   color: var(--danger-color);
   font-size: 1.25rem;
-  font-family: "SF Mono", Monaco, "Inconsolata", "Roboto Mono", monospace;
+  font-family: "Segoe UI", "Noto Sans", "SF Mono", Monaco, "Inconsolata",
+    "Roboto Mono", "Roboto", monospace, sans-serif;
 }
 
 .modal-warning {
